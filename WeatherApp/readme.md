@@ -2,8 +2,8 @@
 
 ## Technologies used
 
-⋅⋅* Tkinter (GUI).
-⋅⋅* Python Imaging Library.
-⋅⋅* Python Requests.
+<li>Tkinter (GUI).
+<li>Python Imaging Library.
+<li>Python Requests.
 
 ![alt text](https://github.com/Greccu/OtherProjects/blob/master/WeatherApp/image.png)
