@@ -38,7 +38,7 @@ class TicTacToe:
             self.board[y][x] = self.current_player
             self.current_player *= -1
             self.available.remove((x, y))
-            print("placing " + str(x) + " " + str(y))
+            #print("placing " + str(x) + " " + str(y))
             # draw
             if self.current_player == 1:  # x
                 x1 = 170 * x + 10
@@ -58,7 +58,7 @@ class TicTacToe:
                 pygame.draw.circle(self.table, (0, 0, 0), (x1, y1), 75, 2)
                 screen.blit(self.table, (45, 45))
         else:
-            print("\n\ntried to place on " + str(x) + " " + str(y) + "\n\n")
+            #print("\n\ntried to place on " + str(x) + " " + str(y) + "\n\n")
             pass
 
     def auto_place(self):
@@ -79,7 +79,7 @@ class TicTacToe:
     # medium difficulty algorithm
     def find(self):
         # STEP1 - CHECKS IF HE CAN WIN THE GAME (checking if any of the lines or diagonals has sum = -2*current_player)
-        print("step 1")
+        #print("step 1")
         # checking rows ald columns
         for i in range(3):
             if self.board[0][i] + self.board[1][i] + self.board[2][i] == 2 * self.current_player:
@@ -113,7 +113,7 @@ class TicTacToe:
                 return (2, 0)
 
         # STEP 2 - CHECKS IF THE PLAYER CAN WIN THE GAME (checking if any of the lines or diagonals has sum = 2*current_player)
-        print("step 2")
+        #print("step 2")
         # checking rows ald columns
         for i in range(3):
             if self.board[0][i] + self.board[1][i] + self.board[2][i] == -2 * self.current_player:
@@ -158,7 +158,7 @@ class TicTacToe:
                 time.sleep(0.5)
                 return (2, 0)
         # STEP 3 - RANDOM
-        print("step 3")
+        #print("step 3")
         place = randint(0, len(self.available) - 1)
         time.sleep(0.5)
         return self.available[place]
@@ -223,16 +223,16 @@ class TicTacToe:
 
     def check(self):
         board = self.board
-        winner = 2  # not ended
         #print("checking            ", board)
         for i in range(3):
             if (board[i][0] != 0) and (board[i][0] == board[i][1] == board[i][2]):
-                winner = board[i][0]
+                return board[i][0]
             elif (board[0][i] != 0) and (board[0][i] == board[1][i] == board[2][i]):
-                winner = board[0][i]
+                return board[0][i]
         if (board[1][1] != 0) and ((board[0][0] == board[1][1] == board[2][2]) or (board[2][0] == board[1][1] == board[0][2])):
-            winner = board[1][1]
-        elif len(self.available) == 0:
+            return board[1][1]
+
+        if len(self.available) == 0:
             return 0
         available = 0
         for i in range(3):
@@ -241,7 +241,7 @@ class TicTacToe:
                     available += 1
         if available == 0:
             return 0
-        return winner
+        return 2
 
     def end(self, check):
         font = pygame.font.Font('freesansbold.ttf', 48)
@@ -358,6 +358,8 @@ def play():
     time.sleep(1)
     game.draw()
     global running
+    global playing
+    playing = True
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
@@ -395,6 +397,7 @@ def play():
                         game.end(check)
             else:
                 if event.type == pygame.MOUSEBUTTONUP:
+                    game.setup()
                     start(restart=True)
             # print(event)
         pygame.display.update()
@@ -403,3 +406,4 @@ def play():
 
 if __name__ == '__main__':
     start()
+
