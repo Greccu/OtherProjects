@@ -12,6 +12,4 @@ A TicTacToe Game created in python. You can play against 3 difficulties + agains
 <li> Pygame for the GUI
 <li> Classes
 
-![alt text](https://github.com/Greccu/OtherProjects/blob/master/TicTacToe%2BAI/image.png)
-![alt text](https://github.com/Greccu/OtherProjects/blob/master/TicTacToe%2BAI/image2.png)
-![alt text](https://github.com/Greccu/OtherProjects/blob/master/TicTacToe%2BAI/image3.png)
+![ezgif-3-36af6db307bf](https://user-images.githubusercontent.com/56735903/110001383-01a44b00-7d1d-11eb-9293-3bca469ef560.gif)
